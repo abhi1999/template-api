@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "SET MONGODB_URI=mongodb://user:password123@ds033145.mlab.com:33145/heroku_ks0dk2hc&& node server.js"
+    "start":"node server.js",
+    "startLocal": "SET MONGODB_URI=mongodb://user:password123@ds033145.mlab.com:33145/heroku_ks0dk2hc&& node server.js"
   },
   "author": "",
   "license": "ISC",
