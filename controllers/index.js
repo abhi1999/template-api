@@ -1,2 +1,3 @@
 const contacts = require('./contacts-controller')
-module.exports={contacts};
+const genericController = require('./generic-controller')
+module.exports={contacts, genericController};

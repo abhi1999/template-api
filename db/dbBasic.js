@@ -5,7 +5,13 @@ const ObjectID = mongodb.ObjectID;
 
 class dbBasicOperations {
     constructor(collection){
+        console.log('DB Basic Opertaions for-'+ collection)
         this._collection = collection;
+        this.getAll = this.getAll.bind(this);
+        this.findById = this.findById.bind(this);
+        this.updateById = this.updateById.bind(this);
+        this.deleteById = this.deleteById.bind(this);
+        this.create = this.create.bind(this);
     }
     getAll(){
         return new Promise( async(resolve, reject)=>{
