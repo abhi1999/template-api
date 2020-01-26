@@ -14,7 +14,7 @@ log4js.configure({
 const appLogger = log4js.getLogger();
 const cors = require('cors');
 const helmet = require('helmet');
-
+const responseTimeLogger = require('./utils/responseTimeLogger');
 const routes = require('./routes');
 const {initDb} = require('./utils/dbUtils');
 
@@ -23,6 +23,8 @@ var app = express();
 app.use(helmet());
 
 app.use(log4js.connectLogger(appLogger,  { level: 'auto' }));
+
+app.use(responseTimeLogger);
 
 app.use(cors());
 
