@@ -17,6 +17,6 @@ initDb().then(()=>{
     process.exit(1);
 })
 
-
+console.log('all the routes', routes)
 app.use('/api', routes)
  

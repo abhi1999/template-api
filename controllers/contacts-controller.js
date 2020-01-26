@@ -43,12 +43,13 @@ const updateOne = async (req, res, next) => {
 }
 const deleteOne = async (req, res, next) => {
   try {
+    // console.log('iamhere', req.params)
     const {id} =req.params;
     const data = await deleteOneContact(id);
     res.status(200).json(data);
     next()
   } catch(e) {
-    console.log(e.message)
+    // console.log(e.message)
     handleError(res, e.message, "Failed to get contact.");
     next(e)
   }

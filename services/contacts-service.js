@@ -13,28 +13,28 @@ const getAllContacts = async () => {
 }
 const createContact = async (contact) => {
     try {
-      return await contactsDb.createContact(contact);
+      return await contactsDb.create(contact);
     } catch(e) {
       throw new Error(e.message)
     }
   }
 const getOneContact = async (id) => {
     try {
-      return await contactsDb.findOne(id);
+      return await contactsDb.findById(id);
     } catch(e) {
       throw new Error(e.message)
     }
   }
   const updateOneContact = async (id, contact) => {
     try {
-      return await contactsDb.updateOne(id, contact);
+      return await contactsDb.updateById(id, contact);
     } catch(e) {
       throw new Error(e.message)
     }
   }
   const deleteOneContact = async (id) => {
     try {
-      return await contactsDb.deleteOne(id);
+      return await contactsDb.deleteById(id);
     } catch(e) {
       throw new Error(e.message)
     }

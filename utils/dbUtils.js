@@ -14,9 +14,9 @@ const initDb =()=>  {
                 reject(err)
             }
             // Save database object from the callback for reuse.
-            db = client.db();
+            _db = client.db();
             console.log("Database connection ready");
-            resolve(db);
+            resolve(_db);
         })
     })
 }
