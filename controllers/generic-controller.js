@@ -1,11 +1,13 @@
 const {genericService} = require('../services')
 const {handleError} = require('../utils');
+const log4js = require('log4js');
+const appLogger = log4js.getLogger();
 
 
 class GenericController {
   constructor(collection){
     this._collection = collection;
-    console.log('Generic Controller for collection - '+ collection)
+    appLogger.info('Generic Controller for collection - '+ collection)
     this._service = new genericService(collection);
     this.getAll = this.getAll.bind(this);
     this.getById = this.getById.bind(this);

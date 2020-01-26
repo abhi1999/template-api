@@ -1,11 +1,12 @@
 const {getDb} = require('../utils/dbUtils');
 const mongodb = require("mongodb");
 const ObjectID = mongodb.ObjectID;
-
+const log4js = require('log4js');
+const appLogger = log4js.getLogger();
 
 class dbBasicOperations {
     constructor(collection){
-        console.log('DB Basic Opertaions for-'+ collection)
+        appLogger.info('DB Basic Opertaions for-'+ collection)
         this._collection = collection;
         this.getAll = this.getAll.bind(this);
         this.findById = this.findById.bind(this);
@@ -39,6 +40,11 @@ class dbBasicOperations {
     }
     findById(id){
         return new Promise( async(resolve, reject)=>{
+            if(!ObjectID.isValid(id)){
+                appLogger.warn('Invalid Id')
+                reject('Incorrect Object Id');
+                return;
+            }
             const db = await getDb();
             db.collection(this._collection).findOne({ _id: new ObjectID(id) }, function(err, doc) {
                 if (err) {
@@ -51,6 +57,11 @@ class dbBasicOperations {
     }
     updateById(id, record){
         return new Promise( async(resolve, reject)=>{
+            if(!ObjectID.isValid(id)){
+                appLogger.warn('Invalid Id')
+                reject('Incorrect Object Id');
+                return;
+            }
             const db = await getDb();
             delete updateDoc._id;
             db.collection(this._collection).updateOne({_id: id}, record, function(err, doc) {
@@ -64,20 +75,19 @@ class dbBasicOperations {
     }
     deleteById(id){
         return new Promise( async(resolve, reject)=>{
-            const db = await getDb();
             if(!ObjectID.isValid(id)){
-                console.log('rejecting')
+                appLogger.warn('Invalid Id')
                 reject('Incorrect Object Id');
                 return;
             }
-            console.log('deleting record - ', new ObjectID(id));
+            const db = await getDb();
+            appLogger.info('deleting record - ', new ObjectID(id));
             db.collection(this._collection).deleteOne({_id: new ObjectID(id)}, function(err, result) {
-                // console.log('after deleting', err, result)
                 if (err) {
-                    console.warn('error in deleting')
+                    appLogger.warn('error in deleting')
                     reject(err)
                 } else {
-                    console.log('resolving delete', result.deletedCount)
+                    appLogger.info('resolving delete', result.deletedCount)
                     resolve(result);
                 }
             });

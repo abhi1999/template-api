@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node server.js",
+    "start": "node server.js",
     "startLocal": "SET MONGODB_URI=mongodb://user:password123@ds033145.mlab.com:33145/heroku_ks0dk2hc&& node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "log4js": "^6.1.0",
     "mongodb": "^3.5.2"
   }
 }
