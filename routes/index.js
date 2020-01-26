@@ -2,11 +2,7 @@ const express = require('express')
 const {EMPLOYEES_COLLECTION, JOB_SITES_COLLECTION} = require("./../config");
 const { contacts, genericController } = require('../controllers')
 const router = express.Router()
- 
-router.use(function timeLog (req, res, next) {
-    console.log('Time: ', Date.now(), req.url)
-    next()
-  })
+
 
 router.get("/contacts", contacts.getAll);
 router.post('/contact', contacts.createOne);

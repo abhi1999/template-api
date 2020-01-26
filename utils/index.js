@@ -1,5 +1,8 @@
+const log4js = require('log4js');
+const appLogger = log4js.getLogger();
+
 const handleError=(res, reason, message, code) =>{
-    console.log("ERROR: " + reason);
+    appLogger.error("ERROR: " + reason);
     res.status(code || 500).json({"error": message});
 }
 

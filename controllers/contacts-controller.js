@@ -48,7 +48,6 @@ const deleteOne = async (req, res, next) => {
     res.status(200).json(data);
     next()
   } catch(e) {
-    console.log(e.message)
     handleError(res, e.message, "Failed to delete contact.");
     next(e)
   }
