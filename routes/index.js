@@ -27,5 +27,13 @@ router.get("/jobSite/:id", jobSites.getById);
 router.put("/jobSite/:id", jobSites.updateById);
 router.delete("/jobSite/:id", jobSites.deleteById);
 
+const dmsService = new genericController(SERVICE_RESPONSE)
+router.get("/dmsService", dmsService.getAll);
+router.post('/dmsService', dmsService.create);
+router.get("/dmsService/:id", dmsService.getById);
+router.put("/dmsService/:id", dmsService.updateById);
+router.delete("/dmsService/:id", dmsService.deleteById);
+
+
 
 module.exports = router
