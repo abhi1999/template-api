@@ -14,9 +14,17 @@ log4js.configure({
 const appLogger = log4js.getLogger();
 const cors = require('cors');
 const helmet = require('helmet');
+const dotenv = require('dotenv');
+dotenv.config();
 const responseTimeLogger = require('./utils/responseTimeLogger');
 const routes = require('./routes');
 const {initDb} = require('./utils/dbUtils');
+
+
+
+const jwt = require('express-jwt');
+const jwtAuthz = require('express-jwt-authz');
+const jwksRsa = require('jwks-rsa');
 
 var app = express();
 
