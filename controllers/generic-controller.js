@@ -64,6 +64,8 @@ class GenericController {
   }
   async create(req, res, next){
     try {
+      console.log('iamhere', req.body)
+
       const obj = req.body;
       obj.createDate = new Date();
       const data = await this._service.create(obj);
@@ -72,7 +74,7 @@ class GenericController {
     }
     catch(e) {
       console.log(e.message)
-      handleError(res, e.message, "Failed to create "+obj);
+      handleError(res, e.message, "Failed to create");
       next(e);
     }
   }

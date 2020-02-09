@@ -29,8 +29,10 @@ class dbBasicOperations {
     create(newRecord){
         return new Promise( async(resolve, reject)=>{
             const db = await getDb();
+            // console.log('inDB', this._collection, newRecord)
             db.collection(this._collection).insertOne(newRecord, function(err, doc) {
                 if (err) {
+                    console.error('inDB error',err)
                     reject(err)
                 } else {
                     resolve(doc);

@@ -1,5 +1,5 @@
 const express = require('express')
-const {EMPLOYEES_COLLECTION, JOB_SITES_COLLECTION,SERVICE_RESPONSE} = require("./../config");
+const {EMPLOYEES_COLLECTION, JOB_SITES_COLLECTION,SERVICE_RESPONSE, EMPLOYEE_JOBSITE_COLLECTION} = require("./../config");
 const { contacts, genericController } = require('../controllers')
 const router = express.Router()
 
@@ -26,6 +26,16 @@ router.post('/jobSite', jobSites.create);
 router.get("/jobSite/:id", jobSites.getById);
 router.put("/jobSite/:id", jobSites.updateById);
 router.delete("/jobSite/:id", jobSites.deleteById);
+
+
+const empJobSites = new genericController(EMPLOYEE_JOBSITE_COLLECTION)
+
+router.get("/empjobSites", empJobSites.getAll);
+router.post('/empjobSite', empJobSites.create);
+router.get("/empjobSite/:id", empJobSites.getById);
+router.put("/empjobSite/:id", empJobSites.updateById);
+router.delete("/empjobSite/:id", empJobSites.deleteById);
+
 
 const dmsService = new genericController(SERVICE_RESPONSE)
 router.get("/dmsServices", dmsService.getAll);
