@@ -40,8 +40,17 @@ class GenericController {
   }
   async updateById(req, res, next){
     try {
-      const contact = req.body;
-      const data = await this._service.updateById(id,contact)
+      console.error('IAMHERE', req.params)
+      const obj = req.body;
+      const {id} =req.params;
+      obj.updateDate = new Date();
+      console.error('IAMHERE2', req.body)
+      
+      console.error('updating '+ this._collection + "  for ", id)
+     
+      console.error('updating '+ this._collection + "  for ", id)
+      const data = await this._service.updateById(id,obj)
+      console.error('DID I GET HERE', req.body)
       res.status(200).json(data);
       next()
     } catch(e) {
@@ -65,9 +74,9 @@ class GenericController {
   async create(req, res, next){
     try {
       console.log('iamhere', req.body)
-
       const obj = req.body;
       obj.createDate = new Date();
+      obj.updateDate = new Date();
       const data = await this._service.create(obj);
       res.status(200).json(data);
       next()

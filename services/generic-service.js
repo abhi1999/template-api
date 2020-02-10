@@ -37,6 +37,7 @@ class GenericService {
   }
   async updateById(id, obj){
     try {
+      console.log('IGOTHERE', id, this.collection)
       return await this._genericDbAccessor.updateById(id, obj);
     } catch(e) {
       throw new Error(e.message)

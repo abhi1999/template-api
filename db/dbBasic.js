@@ -65,9 +65,13 @@ class dbBasicOperations {
                 return;
             }
             const db = await getDb();
-            delete updateDoc._id;
-            db.collection(this._collection).updateOne({_id: id}, record, function(err, doc) {
+            delete record._id;
+            delete record.creatDate;
+
+            console.log('RECORD BEING UPDATED -' +this._collection +" ",{ _id: new ObjectID(id) }, record)
+            db.collection(this._collection).updateOne({ _id: new ObjectID(id) },{"$set": record}, function(err, doc) {
                 if (err) {
+                    console.error('WHY AM I HERE', err)
                     reject(err)
                 } else {
                     resolve(doc);
