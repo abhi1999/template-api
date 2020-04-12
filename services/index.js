@@ -1,4 +1,4 @@
 const contactsSerivce = require('./contacts-service');
 const genericService = require('./generic-service');
-
-module.exports= {contactsSerivce,genericService}
+const bingoService = require('./bingo-service')
+module.exports= {contactsSerivce,genericService, bingoService}
