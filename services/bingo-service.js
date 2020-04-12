@@ -1,14 +1,20 @@
+const { bingoDb} = require('../db')
+ 
 const { getBingoNumber } = require("./bingo/utils");
 const { data } = require("./bingo/raw-data");
 
 const wrapInPromise = (data) => {
     return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(data), 1000)
+        setTimeout(() => resolve(data), 1)
     })
 }
 const getGameList = async () => {
     try {
         const gameListData = data.map(d => { return { id: d.id, name: d.name } })
+/*        const all = await bingoDb.getAll();
+        console.error('iamhere')
+        console.log(all)
+        */
         return await wrapInPromise(gameListData)
     } catch (e) {
         throw new Error(e.message)
@@ -84,6 +90,18 @@ const callNumber = async (gameId, number) => {
         throw new Error("Already Called")
     }
     game.calledNumbers.push(number);
+
+    /*const all = await bingoDb.getAll();
+    const gg = all.find(g=> g.id === id)
+    
+    if(bingoDb.findById(gg._id.toString())){
+       console.error(bingoDb.findById(gg._id.toString()))
+        bingoDb.updateById(gg._id.toString(), game)
+    }
+    else{
+        console.log('else')
+        // bingoDb.create(game)
+    }*/
     return  await getGameDetails(gameId)
 }
 
@@ -96,8 +114,8 @@ const cancelNumberCall = async (gameId, number) => {
     if (index === -1) {
         throw new Error("Number was never called")
     }
-    game.calledNumbers = game.calledNumbers.splice(index, 1);
-    return (getGameDetails())
+    game.calledNumbers.splice(index, 1);
+    return  await getGameDetails(gameId)
 }
 
 module.exports = { getGameList, getGameParticipants, verifyPassword, getGameDetails, callNumber, cancelNumberCall, claimBingo }

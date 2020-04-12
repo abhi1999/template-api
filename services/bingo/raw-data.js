@@ -6,19 +6,19 @@ const data = [
                 id:"Abhishek", 
                 name:'Abhishek', 
                 password:'pandey',
-                bingoCardNumbers:[{"letter":"b","numbers":[6,12,3,15,8]},{"letter":"i","numbers":[30,18,29,16,26]},{"letter":"n","numbers":[40,41,43,45,35]},{"letter":"g","numbers":[55,56,58,46,53]},{"letter":"o","numbers":[72,73,67,69,63]}]
+                bingoCardNumbers:[{"letter":"b","numbers":[6,12,3,15,8]},{"letter":"i","numbers":[30,18,29,16,26]},{"letter":"n","numbers":[40,41,45,35]},{"letter":"g","numbers":[55,56,58,46,53]},{"letter":"o","numbers":[72,73,67,69,63]}]
             },
             {   
                 id:"Rashmi", 
                 name:'Rashmi', 
                 password:'malukani',
-                bingoCardNumbers:[{"letter":"b","numbers":[4,1,2,11,10]},{"letter":"i","numbers":[30,25,18,24,27]},{"letter":"n","numbers":[31,38,45,33,42]},{"letter":"g","numbers":[58,59,57,47,60]},{"letter":"o","numbers":[67,63,61,65,68]}]
+                bingoCardNumbers:[{"letter":"b","numbers":[4,1,2,11,10]},{"letter":"i","numbers":[30,25,18,24,27]},{"letter":"n","numbers":[31,38,33,42]},{"letter":"g","numbers":[58,59,57,47,60]},{"letter":"o","numbers":[67,63,61,65,68]}]
             },
             {   
                 id:"aadi", 
                 name:'Aadi', 
                 password:'pandey',
-                bingoCardNumbers:[{"letter":"b","numbers":[7,1,14,11,9]},{"letter":"i","numbers":[27,20,29,22,26]},{"letter":"n","numbers":[39,34,37,45,35]},{"letter":"g","numbers":[53,60,49,58,46]},{"letter":"o","numbers":[61,65,66,62,67]}]
+                bingoCardNumbers:[{"letter":"b","numbers":[7,1,14,11,9]},{"letter":"i","numbers":[27,20,29,22,26]},{"letter":"n","numbers":[39,34,45,35]},{"letter":"g","numbers":[53,60,49,58,46]},{"letter":"o","numbers":[61,65,66,62,67]}]
             }
         ],
         calledNumbers:[],
